@@ -14,6 +14,10 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import background from './background.png'
+//import logo from './logo.svg'
+import background2 from './background2.png'
+
+import './App.css'
 
 const pages = ['HOME', 'COURSES','COURSE RESEARCH','CAMPUS LOCATIONS'];
 const settings = ['Profile', 'Dashboard', 'Logout'];
@@ -143,9 +147,11 @@ function App() {
           <Button color="inherit">Enquire Now</Button>
           <Button color="inherit">Fees Payment</Button>
         </Toolbar>
-        <img src={background}  width={1080}/>
       </Container>
     </AppBar>
+    <div className='back'>
+    <img src={background}  width={1080}/>
+    </div>
     </ThemeProvider>
   );
 }
