@@ -12,30 +12,47 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import background from './background.png'
 
 const pages = ['HOME', 'COURSES','COURSE RESEARCH','CAMPUS LOCATIONS'];
 const settings = ['Profile', 'Dashboard', 'Logout'];
 
+const outerTheme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#ffffff',
+      color:'#ff0000'
+    },
+    secondary: {
+      main: '#d3f77b',
+    },
+    background: {
+      default: '#f6612c',
+      paper: '#ffffff',
+    },
+    text: {
+      primary: '#8a3d00',
+    },
+  },
+});
+
 function App() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
 
-  return (
+
+  return (<ThemeProvider theme={outerTheme}>
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -93,7 +110,6 @@ function App() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -110,7 +126,7 @@ function App() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            BESSPPL
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -123,40 +139,14 @@ function App() {
               </Button>
             ))}
           </Box>
-
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Course Dashboard</Button>
+          <Button color="inherit">Enquire Now</Button>
+          <Button color="inherit">Fees Payment</Button>
         </Toolbar>
+        <img src={background}  width={1080}/>
       </Container>
     </AppBar>
+    </ThemeProvider>
   );
 }
 export default App;
